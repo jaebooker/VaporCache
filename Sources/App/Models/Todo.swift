@@ -8,10 +8,10 @@ final class Todo: SQLiteModel {
 
     /// A title describing what this `Todo` entails.
     var notes: [String]
-    var xcoordinate: Float
-    var ycoordinate: Float
+    var xcoordinate: Double
+    var ycoordinate: Double
     /// Creates a new `Todo`.
-    init(id: Int? = nil, notes: [String], xcoordinate: Float, ycoordinate: Float) {
+    init(id: Int? = nil, notes: [String], xcoordinate: Double, ycoordinate: Double) {
         self.id = id
         self.notes = notes
         self.xcoordinate = xcoordinate
