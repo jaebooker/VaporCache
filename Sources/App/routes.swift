@@ -2,20 +2,20 @@ import Vapor
 
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
-    // Basic "It works" example
+    
     router.get { req in
-        return "It works!"
+        return "Welcome to the ArCache API!"
     }
     
-    // Basic "Hello, world!" example
+    // Basic "Hello, world!"
     router.get("hello") { req in
         return "Hello, world!"
     }
 
-    // Example of configuring a controller
-    let todoController = TodoController()
-    router.get("todos", use: todoController.index)
-    router.post("todos", use: todoController.create)
-    router.patch("todos", Todo.parameter, use: todoController.update)
-    router.delete("todos", Todo.parameter, use: todoController.delete)
+    // configuring a controller
+    let cacheController = CacheController()
+    router.get("caches", use: cacheController.index)
+    router.post("caches", use: cacheController.create)
+    router.patch("caches", Cache.parameter, use: cacheController.update)
+    router.delete("caches", Cache.parameter, use: cacheController.delete)
 }
