@@ -1,10 +1,8 @@
-import FluentSQLite
-import FluentMySQL
 import FluentPostgreSQL
 import Vapor
 
 /// A single entry of a Cache list.
-final class Cache: SQLiteModel {
+final class Cache: PostgreSQLModel {
     /// The unique identifier for this Cache
     var id: Int?
     var notes: [String]
@@ -18,7 +16,8 @@ final class Cache: SQLiteModel {
         self.ycoordinate = ycoordinate
     }
 }
-
+//extension Cache: VaporCacheUUIDModel {}
+//extension Cache: Migration {}
 /// Allows Cache to be used as a dynamic migration.
 extension Cache: Migration { }
 
@@ -27,3 +26,5 @@ extension Cache: Content { }
 
 /// Allows Cache to be used as a dynamic parameter in route definitions.
 extension Cache: Parameter { }
+//PostgresMigration
+extension Cache: PostgreSQLMigration { }
