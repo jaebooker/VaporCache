@@ -1,4 +1,6 @@
 import FluentSQLite
+import FluentMySQL
+import FluentPostgreSQL
 import Vapor
 
 /// A single entry of a Cache list.

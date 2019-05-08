@@ -1,10 +1,12 @@
 import FluentSQLite
 import FluentMySQL
+import FluentPostgreSQL
 import Vapor
 
 /// Called before your application initializes.
 public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
     // Register providers first
+    try services.register(FluentPostgreSQLProvider())
     try services.register(FluentSQLiteProvider())
     try services.register(FluentMySQLProvider())
     // Register routes to the router
@@ -27,6 +29,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     //configure mySQL
     let config = MySQLDatabaseConfig.root(database: "cachedb")
     databases.add(database: MySQLDatabase(config: config), as: .mysql)
+    //configure postgres
+    let postConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "calebkleveter", database: "vaporcache")
+    databases.add(database: PostgreSQLDatabase(config: postConfig), as: .psql)
     //register database
     services.register(databases)
     // Configure migrations
